@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>:3</title>
+    <style>
+        body {
+            background-color: #000000;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        h1, h2 {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div style="display: flex; justify-content: center; align-items: center; height: 100vh; flex-direction: column;">
+        <h2>We have been together for</h2>
+        <h1 style="font-size: 5em;" class="timebeen"></h1>
+        <h2> I love you :3</h2>
+    </div>
+</body>
+<script>
+const startDate = new Date("2026-03-16T23:14:00");
+
+function updateTime() {
+    const now = new Date();
+    let diff = now - startDate;
+
+    // Time calculations
+    const seconds = Math.floor(diff / 1000) % 60;
+    const minutes = Math.floor(diff / (1000 * 60)) % 60;
+    const hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+    // Format with leading zeros
+    const format = (n) => n.toString().padStart(2, "0");
+
+    const result = `${days}d ${format(hours)}h ${format(minutes)}m ${format(seconds)}s`;
+
+    document.querySelector(".timebeen").textContent = result;
+}
+
+// Run immediately + every second
+updateTime();
+setInterval(updateTime, 1000);
+</script>
+</html>
